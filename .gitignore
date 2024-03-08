@@ -1,5 +1,5 @@
 *.jpg
 *.jpeg
 *.png
-/composers/
-/covers/
+composers/
+covers/
