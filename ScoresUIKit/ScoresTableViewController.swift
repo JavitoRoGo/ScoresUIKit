@@ -7,8 +7,12 @@
 
 import UIKit
 
+// Al heredar de UITableViewController ya está conformado a DataSource y Delegate, es decir, ya incorpora los métodos del dataSource y del delegado; por lo que nosotros no vamos a implementar esos métodos, sino a sobrecargar los que ya están incorporados
+// O sea, no vamos a conformar a DataSource y Delegate (que sí tendríamos que implementar sus métodos para poder conformarnos a ellos), sino que vamos a heredar de una clase que ya se conforma a esos protocolos, y por tanto ya incluye sus métodos, así que los vamos a sobrecargar con nuestra propia funcionalidad
+
 final class ScoresTableViewController: UITableViewController {
 	
+	// Propiedad con la lógica para traer los datos y trabajar con ellos
 	let logic = ScoreLogic.shared
 	
 	override func viewDidLoad() {
@@ -45,14 +49,15 @@ final class ScoresTableViewController: UITableViewController {
 	}
 	
 	// Override to support conditional editing of the table view.
+	// La función pregunta para cada indexPath si puede editar la fila. Si devolvemos true tal cual, pues se podrán editar todas
 	override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-		// La función pregunta para cada indexPath si puede editar la fila. Si devolvemos true tal cual, pues se podrán editar todas
 		return true
 	}
 	
 	// Override to support editing the table view.
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		if editingStyle == .delete {
+			// hay que borrar el dato de la lógica por separado
 			logic.removeScore(indexPath: indexPath)
 			// Delete the row from the data source: esto borra la fila pero no el dato de la lógica
 			tableView.deleteRows(at: [indexPath], with: .fade)
@@ -61,7 +66,7 @@ final class ScoresTableViewController: UITableViewController {
 	
 	// Override to support rearranging the table view.
 	override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-		logic.moveScore(indexPath: fromIndexPath, to: to)
+		logic.moveScore(fromIndexPath, to: to)
 	}
 	
 	// Override to support conditional rearranging of the table view.

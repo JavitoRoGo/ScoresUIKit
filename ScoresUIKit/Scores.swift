@@ -16,3 +16,6 @@ struct Score: Codable {
 	let cover: String
 	let tracks: [String]
 }
+
+// Este modelo es en base a los datos del json, lo que sería el modelo DTO
+// Pero como nos vale para la representación tal cual está, pues usamos un modelo solo para simplificar

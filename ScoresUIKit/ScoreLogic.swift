@@ -7,13 +7,17 @@
 
 import Foundation
 
+// Clase con la lógica de negocio: buscar, borrar, mover, etc.
+// Pero la carga está en el interactor, también el guardado (persistencia)
 final class ScoreLogic {
 	static let shared = ScoreLogic()
 	
+	// Propiedad del tipo del protocolo, para inyectar interactor de producción o test
 	let interactor: DataInteractor
 	
 	var scores: [Score]
 	
+	// Aquí el init no es private para poder acceder a él e inyectar el interactor de test
 	init(interactor: DataInteractor = ScoreInteractor.shared) {
 		self.interactor = interactor
 		self.scores = (try? interactor.getScores()) ?? []
@@ -27,7 +31,7 @@ final class ScoreLogic {
 		scores.remove(at: indexPath.row)
 	}
 	
-	func moveScore(indexPath: IndexPath, to: IndexPath) {
+	func moveScore(_ indexPath: IndexPath, to: IndexPath) {
 		scores.swapAt(indexPath.row, to.row)
 	}
 	
