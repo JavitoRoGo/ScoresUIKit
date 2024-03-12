@@ -9,6 +9,8 @@ import UIKit
 
 class ScoreDetailTableViewController: UITableViewController {
 	
+	let logic = ScoreLogic.shared
+	
 	@IBOutlet weak var movieTitle: UILabel!
 	@IBOutlet weak var composer: UILabel!
 	@IBOutlet weak var year: UILabel!
@@ -24,10 +26,5 @@ class ScoreDetailTableViewController: UITableViewController {
 		composer.text = selectedScore?.composer
 		year.text = "\(selectedScore?.year ?? 1900)"
 		length.text = "\(selectedScore?.length ?? 0)"
-	}
-	
-	
-	@IBAction func save(_ sender: UIBarButtonItem) {
-		
 	}
 }
