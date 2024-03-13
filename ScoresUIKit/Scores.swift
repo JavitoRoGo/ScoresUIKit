@@ -27,7 +27,8 @@ struct ScoreDTO: Codable {
 // Al hacer esto hay que modificar el interactor para que la función getScores haga decode al DTO, y luego transformamos al de visualización con .map
 
 
-struct Score: Codable {
+// Conformamos a Hashable para las fuentes difusas
+struct Score: Codable, Hashable {
 	let id: Int
 	let title: String
 	let composer: String

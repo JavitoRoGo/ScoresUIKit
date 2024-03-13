@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomImage: UIImageView {
+final class CustomImage: UIImageView {
 	override func awakeFromNib() {
 		// si queremos los bordes de la imagen redondeados y personalizar la imagen
 //		layer.shadowOffset = CGSize(width: 0, height: 5)

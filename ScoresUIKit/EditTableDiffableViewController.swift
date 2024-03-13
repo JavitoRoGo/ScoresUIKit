@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class EditTableViewController: UITableViewController {
+final class EditTableDiffableViewController: UITableViewController {
 	
 	let logic = ScoreLogic.shared
 	
@@ -48,7 +48,7 @@ final class EditTableViewController: UITableViewController {
 		}
 		if let yearNum = Int(yearS) {
 			if yearNum < 1900 || yearNum > 2050 {
-				mensaje += "Year must be between 1900 and 2050.\n"
+				mensaje += "Year must be only numbers, from 1900 to 2050.\n"
 			}
 		} else {
 			mensaje += "Year must be only numbers.\n"
@@ -63,15 +63,13 @@ final class EditTableViewController: UITableViewController {
 		
 		if mensaje.isEmpty {
 			// ahora conectamos el unwindsegue desde este ViewCotroller hacia su salida y le damos un nombre (en el storyboard), y lo ejecutamos aquí si todo ha ido bien
-			// nos llevaría a ejecutar entonces la función back que guarda los cambios en CustomTableViewController
-			performSegue(withIdentifier: "backFromSave", sender: nil)
+			performSegue(withIdentifier: "backToMaster", sender: nil)
 		} else {
-			showAlert(mensaje: String(mensaje.dropLast())) // el drop es para borrar el último salto de línea
+			showAlert(mensaje: String(mensaje.dropLast()))
 		}
 	}
 	
 	func showAlert(mensaje: String) {
-		// Para mostrar una alerta siempre son estos 3 pasos: crear la alerta, añadirle acciones (botones) y presentarla
 		let alert = UIAlertController(title: "Validation Error", message: mensaje, preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "OK", style: .cancel))
 		present(alert, animated: true)

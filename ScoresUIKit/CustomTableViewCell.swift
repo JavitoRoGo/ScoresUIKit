@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomTableViewCell: UITableViewCell {
+final class CustomTableViewCell: UITableViewCell {
 	// Esto es una subclase de UIView, y NO de UIViewController, por eso no hay viewDidLoad
 	
 	@IBOutlet weak var cover: CustomImage!

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomTableViewController: UITableViewController {
+final class CustomTableViewController: UITableViewController {
 	let logic = ScoreLogic.shared
 	
 	override func viewDidLoad() {
@@ -56,6 +56,7 @@ class CustomTableViewController: UITableViewController {
 	// Esta es otra forma de hacer la navegación a la pantalla de detalle, que además la podemos reutilizar para llegar a ella desde dos tableView diferentes
 	// Esta opción de navegación es más nueva y más eficiente que la otra
 	@IBSegueAction func selectScore(_ coder: NSCoder) -> EditTableViewController? {
+		// este coder es un constructor genérico para una pantalla
 		guard let selected = tableView.indexPathForSelectedRow else { return nil }
 		let detail = EditTableViewController(coder: coder)
 		detail?.selectedScore = logic.getScore(indexPath: selected)

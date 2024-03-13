@@ -58,7 +58,7 @@ final class ScoresTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		if editingStyle == .delete {
 			// hay que borrar el dato de la lógica por separado
-			logic.removeScore(indexPath: indexPath)
+			logic.removeScoreFrom(indexPath: indexPath)
 			// Delete the row from the data source: esto borra la fila pero no el dato de la lógica
 			tableView.deleteRows(at: [indexPath], with: .fade)
 		}

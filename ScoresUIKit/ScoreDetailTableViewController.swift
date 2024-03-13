@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ScoreDetailTableViewController: UITableViewController {
+final class ScoreDetailTableViewController: UITableViewController {
 	
 	let logic = ScoreLogic.shared
 	

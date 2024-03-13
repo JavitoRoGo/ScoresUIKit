@@ -5,7 +5,7 @@
 //  Created by Javier Rodríguez Gómez on 7/3/24.
 //
 
-import Foundation
+import UIKit
 
 // Clase con la lógica de negocio: buscar, borrar, mover, etc.
 // Pero la carga está en el interactor, también el guardado (persistencia)
@@ -23,6 +23,40 @@ final class ScoreLogic {
 	
 	var composers: [String] {
 		Set(scores.map(\.composer)).sorted()
+	}
+	
+	var search = ""
+	
+	var getSnapshot: NSDiffableDataSourceSnapshot<String, Score> {
+		var snapshot = NSDiffableDataSourceSnapshot<String, Score>()
+		// sección por compositor
+		snapshot.appendSections(composers)
+		// añadir datos por sección
+		for composer in composers {
+//			snapshot.appendItems(getScoresFromComposer(composer), toSection: composer)
+			// cambiamos la línea anterior para poner la búsqueda
+			if search.isEmpty {
+				snapshot.appendItems(getScoresFromComposer(composer), toSection: composer)
+			} else {
+				let scores = getScoresFromComposer(composer).filter { score in
+					score.title.range(of: search, options: [.caseInsensitive, .diacriticInsensitive]) != nil
+				}
+				if scores.count > 0 {
+					snapshot.appendItems(scores, toSection: composer)
+				} else {
+					// si no encuentra alguno, que borre la sección del compositor para que no aparezca sin datos
+					snapshot.deleteSections([composer])
+				}
+			}
+		}
+		return snapshot
+	}
+	
+	var getFavSnapShot: NSDiffableDataSourceSnapshot<Int, Score> {
+		var snapshot = NSDiffableDataSourceSnapshot<Int, Score>()
+		snapshot.appendSections([1])
+		snapshot.appendItems(scores.filter({ $0.favorited }), toSection: 1)
+		return snapshot
 	}
 	
 	// Aquí el init no es private para poder acceder a él e inyectar el interactor de test
@@ -43,8 +77,14 @@ final class ScoreLogic {
 		}
 	}
 	
-	func removeScore(indexPath: IndexPath) {
+	func removeScoreFrom(indexPath: IndexPath) {
 		scores.remove(at: indexPath.row)
+	}
+	
+	func removeScore(_ score: Score) {
+		scores.removeAll { s in
+			s == score
+		}
 	}
 	
 	func moveScore(_ indexPath: IndexPath, to: IndexPath) {
@@ -68,6 +108,12 @@ final class ScoreLogic {
 			scores[index].favorited
 		} else {
 			false
+		}
+	}
+	
+	func getScoresFromComposer(_ composer: String) -> [Score] {
+		scores.filter {
+			$0.composer == composer
 		}
 	}
 }
