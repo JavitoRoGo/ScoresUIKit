@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44A016C52BA3368100103B2B /* MainiPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44A016C42BA3368100103B2B /* MainiPad.storyboard */; };
+		44A016C72BA3369500103B2B /* MainiPad3.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44A016C62BA3369400103B2B /* MainiPad3.storyboard */; };
 		44AA35932BA0E7D600544B78 /* DiffableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA35922BA0E7D600544B78 /* DiffableTableViewController.swift */; };
 		44AA35952BA0F4FE00544B78 /* ScoreDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA35942BA0F4FE00544B78 /* ScoreDiffableDataSource.swift */; };
 		44AA35972BA0F7AC00544B78 /* EditTableDiffableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA35962BA0F7AC00544B78 /* EditTableDiffableViewController.swift */; };
@@ -30,9 +32,15 @@
 		44C656042B9A4B2F00614F0A /* scoresdatatest.json in Resources */ = {isa = PBXBuildFile; fileRef = 44C656032B9A4B2F00614F0A /* scoresdatatest.json */; };
 		44C656062B9A500E00614F0A /* ScoresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C656052B9A500E00614F0A /* ScoresTableViewController.swift */; };
 		44C656082B9A6B7700614F0A /* ScoreDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C656072B9A6B7700614F0A /* ScoreDetailTableViewController.swift */; };
+		44FB07982BA231BF00450C25 /* ViewControllersPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FB07972BA231BF00450C25 /* ViewControllersPreview.swift */; };
+		44FB07A02BA252C700450C25 /* ComposerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FB079F2BA252C700450C25 /* ComposerTableViewCell.swift */; };
+		44FB07A22BA254BC00450C25 /* ComposerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FB07A12BA254BC00450C25 /* ComposerTableViewController.swift */; };
+		44FB07A42BA2571E00450C25 /* ScoreComposerTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FB07A32BA2571D00450C25 /* ScoreComposerTableVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		44A016C42BA3368100103B2B /* MainiPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainiPad.storyboard; sourceTree = "<group>"; };
+		44A016C62BA3369400103B2B /* MainiPad3.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainiPad3.storyboard; sourceTree = "<group>"; };
 		44AA35922BA0E7D600544B78 /* DiffableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableTableViewController.swift; sourceTree = "<group>"; };
 		44AA35942BA0F4FE00544B78 /* ScoreDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreDiffableDataSource.swift; sourceTree = "<group>"; };
 		44AA35962BA0F7AC00544B78 /* EditTableDiffableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTableDiffableViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +66,10 @@
 		44C656032B9A4B2F00614F0A /* scoresdatatest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = scoresdatatest.json; sourceTree = "<group>"; };
 		44C656052B9A500E00614F0A /* ScoresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresTableViewController.swift; sourceTree = "<group>"; };
 		44C656072B9A6B7700614F0A /* ScoreDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreDetailTableViewController.swift; sourceTree = "<group>"; };
+		44FB07972BA231BF00450C25 /* ViewControllersPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllersPreview.swift; sourceTree = "<group>"; };
+		44FB079F2BA252C700450C25 /* ComposerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposerTableViewCell.swift; sourceTree = "<group>"; };
+		44FB07A12BA254BC00450C25 /* ComposerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposerTableViewController.swift; sourceTree = "<group>"; };
+		44FB07A32BA2571D00450C25 /* ScoreComposerTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreComposerTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +89,7 @@
 				44C229832B9F895900077318 /* CustomTableViewCell.swift */,
 				44C229852B9F8E2200077318 /* CustomImage.swift */,
 				44AA35982BA1033D00544B78 /* CustomCollectionViewCell.swift */,
+				44FB079F2BA252C700450C25 /* ComposerTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -100,9 +113,11 @@
 		44C655DE2B9A3B1700614F0A /* ScoresUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				44C655E52B9A3B1700614F0A /* Main.storyboard */,
+				44A016C42BA3368100103B2B /* MainiPad.storyboard */,
+				44A016C62BA3369400103B2B /* MainiPad3.storyboard */,
 				44C656092B9A6B9700614F0A /* ViewControllers */,
 				44C229872B9F8FB600077318 /* Views */,
-				44C655E52B9A3B1700614F0A /* Main.storyboard */,
 				44C655FD2B9A472F00614F0A /* Logic */,
 				44C655FA2B9A463200614F0A /* Interactor */,
 				44C655F42B9A3E9E00614F0A /* Model */,
@@ -162,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				44C656012B9A4B2200614F0A /* DataPreview.swift */,
+				44FB07972BA231BF00450C25 /* ViewControllersPreview.swift */,
 				44C656032B9A4B2F00614F0A /* scoresdatatest.json */,
 			);
 			path = "Test Content";
@@ -178,6 +194,8 @@
 				44AA35942BA0F4FE00544B78 /* ScoreDiffableDataSource.swift */,
 				44AA35962BA0F7AC00544B78 /* EditTableDiffableViewController.swift */,
 				44AA359A2BA1035500544B78 /* FavCollectionViewController.swift */,
+				44FB07A12BA254BC00450C25 /* ComposerTableViewController.swift */,
+				44FB07A32BA2571D00450C25 /* ScoreComposerTableVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -241,10 +259,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				44C655F72B9A3EE300614F0A /* scoresdata.json in Resources */,
+				44A016C52BA3368100103B2B /* MainiPad.storyboard in Resources */,
 				44C655E92B9A3B1900614F0A /* Assets.xcassets in Resources */,
 				44C655EC2B9A3B1900614F0A /* Base in Resources */,
 				44C656042B9A4B2F00614F0A /* scoresdatatest.json in Resources */,
 				44C655E72B9A3B1700614F0A /* Base in Resources */,
+				44A016C72BA3369500103B2B /* MainiPad3.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44FB07982BA231BF00450C25 /* ViewControllersPreview.swift in Sources */,
 				44C655FC2B9A464800614F0A /* DataInteractor.swift in Sources */,
 				44AA359D2BA1073B00544B78 /* Extensions.swift in Sources */,
 				44C229892B9FAF5500077318 /* EditTableViewController.swift in Sources */,
@@ -267,7 +288,10 @@
 				44AA359B2BA1035500544B78 /* FavCollectionViewController.swift in Sources */,
 				44C656082B9A6B7700614F0A /* ScoreDetailTableViewController.swift in Sources */,
 				44C229842B9F895900077318 /* CustomTableViewCell.swift in Sources */,
+				44FB07A02BA252C700450C25 /* ComposerTableViewCell.swift in Sources */,
 				44AA35932BA0E7D600544B78 /* DiffableTableViewController.swift in Sources */,
+				44FB07A22BA254BC00450C25 /* ComposerTableViewController.swift in Sources */,
+				44FB07A42BA2571E00450C25 /* ScoreComposerTableVC.swift in Sources */,
 				44AA35992BA1033D00544B78 /* CustomCollectionViewCell.swift in Sources */,
 				44AA35952BA0F4FE00544B78 /* ScoreDiffableDataSource.swift in Sources */,
 				44C655F92B9A3F1900614F0A /* Scores.swift in Sources */,

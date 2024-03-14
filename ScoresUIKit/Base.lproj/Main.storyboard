@@ -613,7 +613,7 @@
         <!--Favorites-->
         <scene sceneID="X8C-Bf-V3K">
             <objects>
-                <collectionViewController id="a5L-5Q-Ggf" customClass="FavCollectionViewController" customModule="ScoresUIKit" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="favoritesView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="a5L-5Q-Ggf" customClass="FavCollectionViewController" customModule="ScoresUIKit" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="trW-di-N8X">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -622,11 +622,11 @@
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="zelda" id="gFF-hB-XdL" customClass="CustomCollectionViewCell" customModule="ScoresUIKit" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                <rect key="frame" x="10" y="10" width="127.99999999999997" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WT6-g2-40c">
                                     <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
@@ -634,17 +634,53 @@
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZKN-Zd-F9k" customClass="CustomImage" customModule="ScoresUIKit" customModuleProvider="target">
                                             <rect key="frame" x="8" y="8" width="112" height="112"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="112" id="Lk5-IT-y1P"/>
+                                                <constraint firstAttribute="height" constant="112" id="WQf-WF-K5b"/>
+                                            </constraints>
                                         </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IBZ-0Y-ivR">
+                                            <rect key="frame" x="0.0" y="97" width="132" height="31"/>
+                                            <color key="backgroundColor" systemColor="tableBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="31" id="m7b-kh-JrK"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xou-Ff-fTF">
+                                            <rect key="frame" x="8" y="97" width="124" height="23"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="IBZ-0Y-ivR" firstAttribute="leading" secondItem="WT6-g2-40c" secondAttribute="leading" id="1fA-Rh-pyR"/>
+                                        <constraint firstAttribute="bottom" secondItem="IBZ-0Y-ivR" secondAttribute="bottom" id="2me-W5-iOI"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="ZKN-Zd-F9k" secondAttribute="trailing" id="5TY-hz-xWp"/>
+                                        <constraint firstItem="xou-Ff-fTF" firstAttribute="top" secondItem="IBZ-0Y-ivR" secondAttribute="top" id="60R-7Q-qsE"/>
                                         <constraint firstItem="ZKN-Zd-F9k" firstAttribute="leading" secondItem="WT6-g2-40c" secondAttribute="leadingMargin" id="Big-Ba-fgn"/>
                                         <constraint firstItem="ZKN-Zd-F9k" firstAttribute="top" secondItem="WT6-g2-40c" secondAttribute="topMargin" id="JLo-1y-wic"/>
+                                        <constraint firstAttribute="trailing" secondItem="IBZ-0Y-ivR" secondAttribute="trailing" constant="-4" id="O5s-ii-0dg"/>
                                         <constraint firstItem="ZKN-Zd-F9k" firstAttribute="bottom" secondItem="WT6-g2-40c" secondAttribute="bottomMargin" id="Rtu-ge-ROT"/>
+                                        <constraint firstItem="xou-Ff-fTF" firstAttribute="leading" secondItem="WT6-g2-40c" secondAttribute="leading" constant="8" id="Wzn-TJ-CWw"/>
+                                        <constraint firstAttribute="bottom" secondItem="xou-Ff-fTF" secondAttribute="bottom" constant="8" id="Y4J-tn-ed9"/>
+                                        <constraint firstItem="IBZ-0Y-ivR" firstAttribute="top" secondItem="WT6-g2-40c" secondAttribute="top" constant="97" id="e7k-rS-vay"/>
+                                        <constraint firstItem="IBZ-0Y-ivR" firstAttribute="trailing" secondItem="xou-Ff-fTF" secondAttribute="trailing" id="r18-iO-QPH"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                 </collectionViewCellContentView>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="cover" destination="ZKN-Zd-F9k" id="IEa-tm-XOr"/>
+                                    <outlet property="fondo" destination="IBZ-0Y-ivR" id="ivg-AN-WDf"/>
+                                    <outlet property="title" destination="xou-Ff-fTF" id="vzU-Oc-vHF"/>
+                                    <segue destination="Td4-2Z-EK4" kind="show" id="LwM-hJ-S2y"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -877,15 +913,21 @@
             <point key="canvasLocation" x="-1199.2366412213739" y="1640.8450704225354"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="LwM-hJ-S2y"/>
+    </inferredMetricsTieBreakers>
     <resources>
-        <image name="music.note.list" catalog="system" width="32" height="32"/>
+        <image name="music.note.list" catalog="system" width="128" height="115"/>
         <image name="music.note.tv.fill" catalog="system" width="128" height="95"/>
-        <image name="music.quarternote.3" catalog="system" width="32" height="32"/>
+        <image name="music.quarternote.3" catalog="system" width="128" height="102"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tableBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

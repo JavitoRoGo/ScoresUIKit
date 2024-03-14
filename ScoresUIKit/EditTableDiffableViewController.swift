@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class EditTableDiffableViewController: UITableViewController {
+final class EditTableDiffableViewController: UITableViewController, ScoreSelectionDelegate {
 	
 	let logic = ScoreLogic.shared
 	
@@ -22,10 +22,8 @@ final class EditTableDiffableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		movieTitle.text = selectedScore?.title
-		composer.text = selectedScore?.composer
-		year.text = "\(selectedScore?.year ?? 1900)"
-		length.text = "\(selectedScore?.length ?? 0)"
+		initScoreData()
+		connectDelegate()
 		
 		// Para cada compositor se crea una acción con el nombre del compositor, y como acción que asigne el nombre al label
 		let actions = logic.composers.map { name in
@@ -35,6 +33,32 @@ final class EditTableDiffableViewController: UITableViewController {
 		}
 		boton.menu = UIMenu(title: "Select composer", children: actions)
 		boton.showsMenuAsPrimaryAction = true
+	}
+	
+	func initScoreData() {
+		movieTitle.text = selectedScore?.title
+		composer.text = selectedScore?.composer
+		year.text = "\(selectedScore?.year ?? 1900)"
+		length.text = "\(selectedScore?.length ?? 0)"
+	}
+	
+	// Para conectar maestro y detalle en iPad necesitamos la instancia real de DiffableTableViewController, no una instancia nueva
+	// Es así de rollo para recuperar esta instancia, porque son varios controladores
+	// Creo que son dos formas de hacerlo, por eso lo comentado
+	func connectDelegate() {
+//		guard let window = UIApplication.shared
+//			.connectedScenes
+//			.compactMap({ $0 as? UIWindowScene })
+//			.flatMap(\.windows)
+//			.first(where: { $0.isKeyWindow })?
+//			.rootViewController as? UISplitViewController else { return }
+		guard let navigation = splitViewController?.viewControllers.first as? UINavigationController,
+			  let tableView = navigation.topViewController as? DiffableTableViewController else { return }
+		
+		tableView.delegate = self
+		tableView.selectFirst()
+		
+		// esta función no se ejecuta en iPhone porque no existe splitViewController y sale por return, así que no se rompe nada
 	}
 	
 	@IBAction func saveScore(_ sender: UIBarButtonItem) {
@@ -73,5 +97,12 @@ final class EditTableDiffableViewController: UITableViewController {
 		let alert = UIAlertController(title: "Validation Error", message: mensaje, preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "OK", style: .cancel))
 		present(alert, animated: true)
+	}
+	
+	
+	// Conformamos a nuestro protocolo y ponemos la función, para navegar en el iPad
+	func itemSelected(score: Score) {
+		selectedScore = score
+		initScoreData()
 	}
 }

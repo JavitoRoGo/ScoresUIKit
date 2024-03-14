@@ -17,6 +17,8 @@ import UIKit
 final class DiffableTableViewController: UITableViewController, UISearchResultsUpdating {
 	let logic = ScoreLogic.shared
 	
+	var delegate: ScoreSelectionDelegate?
+	
 	// aquí cambiamos el tipo a la clase que nos hicimos, para tener la lógica fuera, más ordenada
 	lazy var dataSource: ScoreDiffableDataSource = {
 		ScoreDiffableDataSource(tableView: tableView) { tableView, indexPath, score in
@@ -46,6 +48,15 @@ final class DiffableTableViewController: UITableViewController, UISearchResultsU
 		search.obscuresBackgroundDuringPresentation = false
 		navigationItem.searchController = search
 		navigationItem.searchController?.searchResultsUpdater = self
+	}
+	
+	
+	// esta función es para que el iPad muestre el detalle del primer elemento al iniciar la app, hasta que se pulse algo, y también aparece pulsada la fila
+	func selectFirst() {
+		let indexPath = IndexPath(row: 0, section: 0)
+		guard let first = dataSource.itemIdentifier(for: indexPath) else { return }
+		delegate?.itemSelected(score: first)
+		tableView.selectRow(at: indexPath, animated: false, scrollPosition: .top)
 	}
 	
 	
@@ -96,4 +107,19 @@ final class DiffableTableViewController: UITableViewController, UISearchResultsU
 		logic.search = search
 		dataSource.apply(logic.getSnapshot)
 	}
+	
+	
+	// Añadimos este delegado para la navegación en iPad, para saber qué elemento se ha tocado y enviarlo a la pantalla de detalla. Aunque con un NotificationCenter sería más sencillo
+	// También necesitamos un protocolo
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		guard let score = dataSource.itemIdentifier(for: indexPath) else { return }
+		delegate?.itemSelected(score: score)
+		
+		// esta función sí se ejecuta en iPhone al pulsar una fila, pero como delegate es nil pues sale por return y funciona
+	}
+}
+
+
+protocol ScoreSelectionDelegate {
+	func itemSelected(score: Score)
 }
