@@ -83,6 +83,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44A016CD2BA3A56300103B2B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		44C229872B9F8FB600077318 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +106,7 @@
 			children = (
 				44C655DE2B9A3B1700614F0A /* ScoresUIKit */,
 				44C655DD2B9A3B1700614F0A /* Products */,
+				44A016CD2BA3A56300103B2B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

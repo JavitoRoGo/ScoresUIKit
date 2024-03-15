@@ -31,6 +31,17 @@ class ScoreComposerTableVC: UITableViewController {
 			guard let composer = notification.object as? String else { return }
 			self.composer = composer
 			loadDataComposers()
+			Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [self] _ in
+				NotificationCenter.default.post(name: .scoreSelected, object: dataSource.snapshot().itemIdentifiers[0])
+			}
+		}
+		
+		// Para que aparezcan los datos del primero al cargar la app y que el detalle no aparezca en blanco
+		// Pero hay que darle un pequeño retraso para que cargue viewDidLoad de la vista de edit
+		composer = logic.composers[0]
+		loadDataComposers()
+		Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [self] _ in
+			NotificationCenter.default.post(name: .scoreSelected, object: dataSource.snapshot().itemIdentifiers[0])
 		}
 	}
 	
@@ -42,6 +53,12 @@ class ScoreComposerTableVC: UITableViewController {
 		snapshot.appendSections([1])
 		snapshot.appendItems(scores, toSection: 1)
 		dataSource.apply(snapshot, animatingDifferences: false)
+	}
+	
+	// notification para las 3 columnas
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		guard let selected = dataSource.itemIdentifier(for: indexPath) else { return }
+		NotificationCenter.default.post(name: .scoreSelected, object: selected)
 	}
 	
 	deinit {

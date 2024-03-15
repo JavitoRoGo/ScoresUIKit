@@ -13,4 +13,5 @@ import Foundation
 extension Notification.Name {
 	static let favChanges = Notification.Name("FAVORITECHANGES")
 	static let composerSelected = Notification.Name("COMPOSERSELECTED")
+	static let scoreSelected = Notification.Name("SCORESELECTED")
 }

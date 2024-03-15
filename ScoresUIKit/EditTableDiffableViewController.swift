@@ -24,6 +24,7 @@ final class EditTableDiffableViewController: UITableViewController, ScoreSelecti
 		
 		initScoreData()
 		connectDelegate()
+		observer3Columns()
 		
 		// Para cada compositor se crea una acción con el nombre del compositor, y como acción que asigne el nombre al label
 		let actions = logic.composers.map { name in
@@ -59,6 +60,18 @@ final class EditTableDiffableViewController: UITableViewController, ScoreSelecti
 		tableView.selectFirst()
 		
 		// esta función no se ejecuta en iPhone porque no existe splitViewController y sale por return, así que no se rompe nada
+	}
+	
+	// función para trabajar con las 3 columnas
+	func observer3Columns() {
+		NotificationCenter.default.addObserver(forName: .scoreSelected, object: nil, queue: .main) { [self] notification in
+			guard let score = notification.object as? Score else { return }
+			itemSelected(score: score)
+		}
+	}
+	
+	deinit {
+		NotificationCenter.default.removeObserver(self, name: .scoreSelected, object: nil)
 	}
 	
 	@IBAction func saveScore(_ sender: UIBarButtonItem) {
