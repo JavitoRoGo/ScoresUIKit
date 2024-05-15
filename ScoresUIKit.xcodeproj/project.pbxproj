@@ -224,6 +224,8 @@
 			dependencies = (
 			);
 			name = ScoresUIKit;
+			packageProductDependencies = (
+			);
 			productName = ScoresUIKit;
 			productReference = 44C655DC2B9A3B1700614F0A /* ScoresUIKit.app */;
 			productType = "com.apple.product-type.application";
